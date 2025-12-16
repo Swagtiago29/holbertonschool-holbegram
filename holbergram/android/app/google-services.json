@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137746779506",
+    "project_id": "holbergram-5570b",
+    "storage_bucket": "holbergram-5570b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137746779506:android:007249afad77b0bdc521eb",
+        "android_client_info": {
+          "package_name": "com.example.holbergram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuafZvvEBfqMhw7StSjLuU6yySbe2HjVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
