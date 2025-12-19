@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:holbergram/methods/auth_methods.dart';
 import 'package:holbergram/widgets/text_field.dart';
+import 'package:holbergram/screens/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final TextEditingController emailController;
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         _passwordVisible
                             ? Icons.visibility_off
                             : Icons.visibility,
-                            color: const Color.fromARGB(218, 226, 37, 24),
+                        color: const Color.fromARGB(218, 226, 37, 24),
                       ),
                       onPressed: () {
                         setState(() {
@@ -94,7 +96,30 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        final res = await AuthMethods().login(
+                          email: widget.emailController.text,
+                          password: widget.passwordController.text,
+                        );
+
+                        if (!context.mounted) return;
+
+                        if (res == 'success') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Login')),
+                          );
+
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (_) => HomeScreen()),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(
+                            context,
+                          ).showSnackBar(SnackBar(content: Text(res)));
+                        }
+                      },
+
                       child: Text(
                         'Log in',
                         style: TextStyle(color: Colors.white),
@@ -122,7 +147,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text("Don't have an account"),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpScreen(
+                                  emailController: TextEditingController(),
+                                  passwordController: TextEditingController(),
+                                  usernameController: TextEditingController(),
+                                  passwordConfirmController:
+                                      TextEditingController(),
+                                ),
+                              ),
+                            );
+                          },
                           child: Text(
                             'Sign up',
                             style: TextStyle(

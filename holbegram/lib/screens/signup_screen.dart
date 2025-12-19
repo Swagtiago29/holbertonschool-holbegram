@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:holbergram/screens/login_screen.dart';
 import 'package:holbergram/widgets/text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -81,8 +82,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       alignment: Alignment.bottomLeft,
                       icon: Icon(
                         _passwordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: const Color.fromARGB(218, 226, 37, 24),
                       ),
                       onPressed: () {
@@ -94,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(height: 24),
                   TextFieldInput(
-                    controller: widget.passwordController,
+                    controller: widget.passwordConfirmController,
                     isPassword: !_passwordVisible,
                     hintText: 'Confirm Password',
                     keyboardType: TextInputType.visiblePassword,
@@ -102,8 +103,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       alignment: Alignment.bottomLeft,
                       icon: Icon(
                         _passwordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: const Color.fromARGB(218, 226, 37, 24),
                       ),
                       onPressed: () {
@@ -145,7 +146,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Text("Have an account?"),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(
+                                  emailController: TextEditingController(),
+                                  passwordController: TextEditingController(),
+                                ),
+                              ),
+                            );
+                          },
                           child: Text(
                             'Log in',
                             style: TextStyle(
