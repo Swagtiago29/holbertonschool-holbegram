@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:holbergram/methods/auth_methods.dart';
 import 'package:holbergram/widgets/text_field.dart';
 import 'package:holbergram/screens/signup_screen.dart';
+import 'package:holbergram/screens/home.dart';
 
 class LoginScreen extends StatefulWidget {
   final TextEditingController emailController;
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (_) => HomeScreen()),
+                            MaterialPageRoute(builder: (_) => Home()),
                           );
                         } else {
                           ScaffoldMessenger.of(

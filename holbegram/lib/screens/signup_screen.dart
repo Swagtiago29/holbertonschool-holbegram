@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:holbergram/screens/login_screen.dart';
+import 'package:holbergram/screens/upload_image_screen.dart';
 import 'package:holbergram/widgets/text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -129,7 +130,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                AddPicture(
+                                  email: widget.emailController.text,
+                                  username:  widget.usernameController.text,
+                                  password: widget.passwordController.text,
+                                ),
+                          ),
+                        );
+                      },
                       child: Text(
                         'Sign Up',
                         style: TextStyle(color: Colors.white),
@@ -161,6 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             'Log in',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 22,
                               color: Color.fromARGB(218, 226, 37, 24),
                             ),
                           ),
